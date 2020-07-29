@@ -1,0 +1,27 @@
+name: Build
+
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+    build:
+        name: build
+        runs-on: macOS-latest
+        steps:
+        - uses: sinoru/actions-setup-xcode@v1.1
+          with:
+            xcode-version: '11.6'
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Check XCode Version
+          run: xcodebuild -version
+
+        - name: Mac Catalyst
+          run: |
+            set -o pipefail && xcodebuild clean build -project TestSceneView.xcodeproj -scheme TestSceneView -destination "platform=macOS,variant=Mac Catalyst" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty

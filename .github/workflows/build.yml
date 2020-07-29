@@ -24,4 +24,4 @@ jobs:
 
         - name: Mac Catalyst
           run: |
-            set -o pipefail && xcodebuild clean build -project TestSceneView.xcodeproj -scheme TestSceneView -destination "platform=macOS,variant=Mac Catalyst" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
+            xcodebuild clean build -project TestSceneView.xcodeproj -scheme TestSceneView -destination "platform=macOS,variant=Mac Catalyst" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO

@@ -22,6 +22,10 @@ jobs:
         - name: Check XCode Version
           run: xcodebuild -version
 
+        - name: iOS Simulator
+          run: |
+            xcodebuild clean build -project TestSceneView.xcodeproj -scheme TestSceneView -destination "platform=iOS Simulator,name=iPhone 8,OS=13.6" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+
         - name: Mac Catalyst
           run: |
             xcodebuild clean build -project TestSceneView.xcodeproj -scheme TestSceneView -destination "platform=macOS,variant=Mac Catalyst" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
